@@ -50,10 +50,14 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 6969;
     private Boolean isRegistered;
 
+    private BackPressCloseHandler backPressCloseHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        backPressCloseHandler = new BackPressCloseHandler(this);
 
         isRegistered=false;
         button_login_signup = (Button) findViewById(R.id.button_login_signup);
@@ -273,4 +277,8 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signIntent, RC_SIGN_IN);
     }
 
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
+    }
 }
