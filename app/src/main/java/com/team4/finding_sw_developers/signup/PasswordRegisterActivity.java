@@ -194,7 +194,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
-                                reference.child(stringReplace(user_email)).setValue("true");
+                                reference.child(stringReplace(user_email)).child("name").setValue("NULL");
                                 Toast.makeText(PasswordRegisterActivity.this, "successfuly update", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();

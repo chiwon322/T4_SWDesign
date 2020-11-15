@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".signup.User_information_registration"></activity>
         <activity android:name=".mypage.Edit_interest" />
         <activity android:name=".mypage.Edit_information" />
         <activity android:name=".MainActivity" />

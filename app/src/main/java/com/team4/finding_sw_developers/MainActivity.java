@@ -1,12 +1,24 @@
 package com.team4.finding_sw_developers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.team4.finding_sw_developers.signup.PasswordRegisterActivity;
+import com.team4.finding_sw_developers.signup.User_information_registration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,10 +27,41 @@ public class MainActivity extends AppCompatActivity {
     private MainSecondFragment main_second_fragment= new MainSecondFragment();
     private MainThirdFragment main_third_fragment = new MainThirdFragment();
     private MainFourthFragment main_fourth_fragment = new MainFourthFragment();
+
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String user_email;
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        user_email = user.getEmail();
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("MEMBER");
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String user_name = snapshot.child(PasswordRegisterActivity.stringReplace(user_email)).child("name").getValue().toString();
+
+                if(user_name.equals("NULL")) {
+                    Toast.makeText(MainActivity.this, "개인 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, User_information_registration.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         chipNavigationBar = findViewById(R.id.chipnavigation);
 
