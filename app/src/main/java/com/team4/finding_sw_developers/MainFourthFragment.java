@@ -32,14 +32,14 @@ public class MainFourthFragment extends Fragment {
         editInterest_button = (Button)v.findViewById(R.id.mypage_editInterest_button);
         userID_textView = (TextView)v.findViewById(R.id.mypage_userID_textView);
 
-        editInfo_button.setOnClickListener(editInfo_button_onClickListener);
-        editInterest_button.setOnClickListener(editInterest_button_onClickListener);
-
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userID = currentUser.getEmail();
 
         userID_textView.setText(userID);
+
+        editInfo_button.setOnClickListener(editInfo_button_onClickListener);
+        editInterest_button.setOnClickListener(editInterest_button_onClickListener);
         return v;
     }
 
@@ -47,8 +47,9 @@ public class MainFourthFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(), Edit_information.class);
-
+            intent.putExtra("user_email", userID);
             startActivity(intent);
+            getActivity().getSupportFragmentManager().beginTransaction().remove(MainFourthFragment.this).commit();
         }
     };
 

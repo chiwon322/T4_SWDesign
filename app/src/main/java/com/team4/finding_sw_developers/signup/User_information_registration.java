@@ -41,7 +41,7 @@ public class User_information_registration extends AppCompatActivity {
         complete_button.setOnClickListener(complete_onClickListener);
     }
 
-    View.OnClickListener complete_onClickListener = new View.OnClickListener() {
+    private View.OnClickListener complete_onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             user_name = name_editText.getText().toString();
