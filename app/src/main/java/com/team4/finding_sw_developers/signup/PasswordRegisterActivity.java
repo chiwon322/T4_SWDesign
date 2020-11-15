@@ -1,4 +1,4 @@
-package com.team4.finding_sw_developers;
+package com.team4.finding_sw_developers.signup;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -21,6 +21,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.team4.finding_sw_developers.MainActivity;
+import com.team4.finding_sw_developers.R;
 
 public class PasswordRegisterActivity extends AppCompatActivity {
     private EditText editText_first;
@@ -28,13 +32,23 @@ public class PasswordRegisterActivity extends AppCompatActivity {
     private Button btn_next;
     private TextView tv_warning;
     private boolean fir_blind_mode,sec_blind_mode;
-    FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private  ProgressDialog progressDialog;
+    private Intent m_intent;
+    private String user_email;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_register);
 
+        m_intent = getIntent();
+        user_email = m_intent.getExtras().getString("email");
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference("MEMBER");
 
         progressDialog = new ProgressDialog(PasswordRegisterActivity.this);
         progressDialog.setMessage("Please Wait for registering password");
@@ -180,6 +194,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
+                                reference.child(stringReplace(user_email)).setValue("true");
                                 Toast.makeText(PasswordRegisterActivity.this, "successfuly update", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
@@ -190,6 +205,11 @@ public class PasswordRegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    public static String stringReplace(String str){
+        String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z]";
+        str =str.replaceAll(match, "");
+        return str;
     }
 }
