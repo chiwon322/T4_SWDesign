@@ -3,22 +3,29 @@ package com.team4.finding_sw_developers;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class ClientWritingSecond extends AppCompatActivity {
     private LinearLayout first_layout;
     private TextView first_textview;
+    private TextView start_txt,end_txt;
+    private Calendar mCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,47 @@ public class ClientWritingSecond extends AppCompatActivity {
 
         first_textview=findViewById(R.id.second_category_text);
         first_layout=findViewById(R.id.second_layout);
+
+        start_txt=findViewById(R.id.start_term);
+        end_txt=findViewById(R.id.end_term);
+        mCalendar = new GregorianCalendar();
+
+        start_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int year = mCalendar.get(Calendar.YEAR);
+                int month = mCalendar.get(Calendar.MONTH);
+                int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ClientWritingSecond.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        Calendar ddayCalendar = Calendar.getInstance();
+                        ddayCalendar.set(i, i1, i2);
+                        start_txt.setText(i+"/"+(i1+1)+"/"+i2);
+                    }
+                },year,month,day);
+                dialog.setMessage("시작일");
+                dialog.show();
+            }
+        });
+        end_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int year = mCalendar.get(Calendar.YEAR);
+                int month = mCalendar.get(Calendar.MONTH);
+                int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ClientWritingSecond.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        Calendar ddayCalendar = Calendar.getInstance();
+                        ddayCalendar.set(i, i1, i2);
+                        end_txt.setText(i+"/"+(i1+1)+"/"+i2);
+                    }
+                },year,month,day);
+                dialog.setMessage("종료일");
+                dialog.show();
+            }
+        });
         first_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
