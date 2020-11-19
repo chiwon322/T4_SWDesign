@@ -13,7 +13,6 @@
         <activity android:name=".ClientScalePay" />
         <activity android:name=".ClientWritingFirst" />
         <activity android:name=".signup.User_information_registration" />
-        <activity android:name=".mypage.Edit_interest" />
         <activity android:name=".mypage.Edit_information" />
         <activity android:name=".MainActivity" />
         <activity android:name=".signup.PasswordRegisterActivity" />

@@ -18,7 +18,7 @@ import com.team4.finding_sw_developers.mypage.Edit_information;
 
 public class MainFourthFragment extends Fragment {
 
-    private Button editInfo_button, editInterest_button,writing_button;
+    private Button editInfo_button, writing_button;
     private TextView userID_textView;
     private String userID;
     private FirebaseAuth mAuth;
@@ -36,7 +36,6 @@ public class MainFourthFragment extends Fragment {
         View v=inflater.inflate(R.layout.fragment_main_fourth, container, false);
 
         editInfo_button = (Button)v.findViewById(R.id.mypage_editInfo_button);
-        editInterest_button = (Button)v.findViewById(R.id.mypage_editInterest_button);
         userID_textView = (TextView)v.findViewById(R.id.mypage_userID_textView);
         writing_button= v.findViewById(R.id.writing_bt);
 
@@ -48,8 +47,6 @@ public class MainFourthFragment extends Fragment {
 
         writing_button.setOnClickListener(writing_button_onClickListener);
         editInfo_button.setOnClickListener(editInfo_button_onClickListener);
-        editInterest_button.setOnClickListener(editInterest_button_onClickListener);
-        Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
         return v;
     }
 
@@ -62,12 +59,6 @@ public class MainFourthFragment extends Fragment {
         }
     };
 
-    View.OnClickListener editInterest_button_onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), Edit_information.class);
-        }
-    };
     View.OnClickListener writing_button_onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
