@@ -58,6 +58,7 @@ public class MainFirstFragment extends Fragment {
             price_txt.setText(arrayList.get(i).getPrice());
             review_txt.setText(arrayList.get(i).getReview());
             linearLayout.addView(view);
+
         }
 
         //CustomAdapter customAdapter = new CustomAdapter(arrayList);

@@ -7,12 +7,27 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+
 public class MainSecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_main_second, container, false);
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DeveloperAd");
+        HashMap<String, Object> hashMap = new HashMap<>();
+        reference= FirebaseDatabase.getInstance().getReference("DeveloperAd").push();
+        String key = reference.getKey();
+        hashMap.put("abc","name");
+        hashMap.put("ABC","name");
+
+        reference.setValue(hashMap);
+
         return v;
     }
 }

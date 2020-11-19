@@ -66,15 +66,8 @@ public class Edit_information extends AppCompatActivity {
 
             reference.child("name").setValue(new_name);
 
-            startActivity(new Intent(Edit_information.this, MainActivity.class));
             finish();
         }
     };
 
-
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(Edit_information.this, MainActivity.class));
-        finish();
-    }
 }

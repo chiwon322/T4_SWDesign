@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ClientWritingSecond"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="681dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="지역 선택"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:id="@+id/second_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/stroke_design"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            >
+
+            <TextView
+                android:id="@+id/second_category_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="전체"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="만남 필요 여부"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+            <Switch
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/stroke_design"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            >
+
+            <EditText
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="예)OOO분야를 제작 요청합니다."
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/first_next_bt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="다음"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+
+
+</LinearLayout>

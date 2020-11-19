@@ -282,4 +282,13 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         backPressCloseHandler.onBackPressed();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null && mAuth.getCurrentUser().isEmailVerified()) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+    }
 }
