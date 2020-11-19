@@ -175,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(context, "Registerd!", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                     Intent intent = new Intent(context, PasswordRegisterActivity.class);
-                    intent.putExtra("email", email);
+                    //intent.putExtra("email", email);
                     startActivity(intent);
                     finish();
                 }else{

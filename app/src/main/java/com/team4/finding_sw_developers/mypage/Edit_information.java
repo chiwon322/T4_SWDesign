@@ -3,6 +3,8 @@ package com.team4.finding_sw_developers.mypage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,19 +28,19 @@ public class Edit_information extends AppCompatActivity {
     private EditText name_editText;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String user_email, user_name = "";
-    private Intent m_intent;
+    private String user_UID, user_name = "";
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_information);
 
-        m_intent = getIntent();
-        user_email = m_intent.getExtras().getString("user_email", null);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("MEMBER").child(PasswordRegisterActivity.stringReplace(user_email));
+        reference = database.getReference("MEMBER").child(user_UID);
 
         complete_button = (Button)findViewById(R.id.information_editing_complete_button);
         name_editText = (EditText)findViewById(R.id.information_editing_name_editText);
@@ -46,7 +48,7 @@ public class Edit_information extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                user_name = snapshot.child("name").getValue().toString();
+                user_name = snapshot.child("username").getValue().toString();
                 name_editText.setText(user_name);
             }
 
@@ -64,7 +66,8 @@ public class Edit_information extends AppCompatActivity {
         public void onClick(View view) {
             String new_name = name_editText.getText().toString();
 
-            reference.child("name").setValue(new_name);
+            reference.child("username").setValue(new_name);
+            reference.child("search").setValue(new_name);
 
             finish();
         }

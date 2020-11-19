@@ -57,7 +57,6 @@ public class MainFourthFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(), Edit_information.class);
-            intent.putExtra("user_email", userID);
             startActivity(intent);
             //getActivity().getSupportFragmentManager().beginTransaction().remove(MainFourthFragment.this).commit();
         }

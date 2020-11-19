@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String user_email;
+    private String user_UID;
     private FirebaseUser user;
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        user_email = user.getEmail();
+        user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("MEMBER");
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String user_name = snapshot.child(PasswordRegisterActivity.stringReplace(user_email)).child("name").getValue().toString();
+                String user_name = snapshot.child(user_UID).child("username").getValue().toString();
 
                 if(user_name.equals("NULL")) {
                     Toast.makeText(MainActivity.this, "개인 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();

@@ -34,18 +34,18 @@ public class PasswordRegisterActivity extends AppCompatActivity {
     private boolean fir_blind_mode,sec_blind_mode;
     private FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     private  ProgressDialog progressDialog;
-    private Intent m_intent;
-    private String user_email;
+    private String user_UID;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_register);
 
-        m_intent = getIntent();
-        user_email = m_intent.getExtras().getString("email");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("MEMBER");
@@ -194,7 +194,12 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
-                                reference.child(stringReplace(user_email)).child("name").setValue("NULL");
+                                reference.child(user_UID).child("id").setValue(user_UID.toLowerCase());
+                                reference.child(user_UID).child("imageURL").setValue("default");
+                                reference.child(user_UID).child("username").setValue("NULL");
+                                reference.child(user_UID).child("search").setValue("NULL");
+                                reference.child(user_UID).child("status").setValue("offline");
+
                                 Toast.makeText(PasswordRegisterActivity.this, "successfuly update", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
@@ -205,11 +210,5 @@ public class PasswordRegisterActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public static String stringReplace(String str){
-        String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z]";
-        str =str.replaceAll(match, "");
-        return str;
     }
 }

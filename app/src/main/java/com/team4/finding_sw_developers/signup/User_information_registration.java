@@ -21,7 +21,7 @@ public class User_information_registration extends AppCompatActivity {
     private Button complete_button;
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String user_name, user_email;
+    private String user_name, user_UID;
     private FirebaseUser user;
 
     @Override
@@ -33,7 +33,7 @@ public class User_information_registration extends AppCompatActivity {
         reference = database.getReference("MEMBER");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        user_email = user.getEmail();
+        user_UID = user.getUid();
 
         name_editText = (EditText) findViewById(R.id.information_registration_name_editText);
         complete_button = (Button)findViewById(R.id.information_registration_complete_button);
@@ -45,7 +45,8 @@ public class User_information_registration extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             user_name = name_editText.getText().toString();
-            reference.child(PasswordRegisterActivity.stringReplace(user_email)).child("name").setValue(user_name);
+            reference.child(user_UID).child("username").setValue(user_name);
+            reference.child(user_UID).child("search").setValue(user_name);
 
             Intent intent = new Intent(User_information_registration.this, MainActivity.class);
             startActivity(intent);
