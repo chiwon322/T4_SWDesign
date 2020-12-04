@@ -23,7 +23,7 @@
         <item>전남</item>
         <item>제주</item>
     </string-array>
-    <string-array name="total_middle"/>
+    <string-array name="total_middle" />
 
     <string-array name="seoul_middle">
         <item>전체</item>

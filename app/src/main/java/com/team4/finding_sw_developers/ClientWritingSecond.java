@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.team4.finding_sw_developers.Models.ClientAd;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,19 +29,80 @@ import java.util.GregorianCalendar;
 public class ClientWritingSecond extends AppCompatActivity {
     private LinearLayout first_layout;
     private TextView first_textview;
-    private TextView start_txt,end_txt;
+    private TextView start_txt, end_txt;
     private Calendar mCalendar;
+    private RadioGroup radioGroup;
+    private RadioButton[] radioButton = new RadioButton[4];
+    private Button nextbt;
+    private ClientAd clientAd;
+    private String check_text = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_writing_second);
+        Intent intent = getIntent();
+        clientAd = (ClientAd) intent.getSerializableExtra("Data");
+        clientAd.setClientregion("전체");
+        clientAd.setClientstarttime("기한없음");
+        clientAd.setClientendtime("기한없음");
+        clientAd.setClientprepare("아이디어 없음");
 
-        first_textview=findViewById(R.id.second_category_text);
-        first_layout=findViewById(R.id.second_layout);
+        Toast.makeText(this, clientAd.getClienttitle() + "", Toast.LENGTH_SHORT).show();
+        first_textview = findViewById(R.id.second_category_text);
+        first_layout = findViewById(R.id.second_layout);
 
-        start_txt=findViewById(R.id.start_term);
-        end_txt=findViewById(R.id.end_term);
+        start_txt = findViewById(R.id.start_term);
+        end_txt = findViewById(R.id.end_term);
+        radioGroup = findViewById(R.id.prepare_radiogroup);
+        radioButton[0] = findViewById(R.id.prepare_radiobt1);
+        radioButton[1] = findViewById(R.id.prepare_radiobt2);
+        radioButton[2] = findViewById(R.id.prepare_radiobt3);
+        radioButton[3] = findViewById(R.id.prepare_radiobt4);
+        radioButton[0].setChecked(true);
+        nextbt = findViewById(R.id.second_next_bt);
+        nextbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClientWritingSecond.this, ClientWritingThird.class);
+                intent.putExtra("Data", clientAd);
+                startActivity(intent);
+            }
+        });
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.prepare_radiobt1) {
+                    radioButton[0].setText("아이디어 없음");
+                    check_text = "아이디어 없음";
+                    radioButton[1].setText("");
+                    radioButton[2].setText("");
+                    radioButton[3].setText("");
+                } else if (i == R.id.prepare_radiobt2) {
+                    radioButton[1].setText("아이디어만 보유");
+                    check_text = "아이디어만 보유";
+                    radioButton[0].setText("");
+                    radioButton[2].setText("");
+                    radioButton[3].setText("");
+                } else if(i==R.id.prepare_radiobt3){
+                    radioButton[2].setText("기획안 보유");
+                    check_text = "기획안 보유";
+                    radioButton[0].setText("");
+                    radioButton[1].setText("");
+                    radioButton[3].setText("");
+                }else{
+                    radioButton[3].setText("상세 기획서 보유");
+                    check_text = "상세 기획서 보유";
+                    radioButton[0].setText("");
+                    radioButton[1].setText("");
+                    radioButton[2].setText("");
+                }
+                clientAd.setClientprepare(check_text);
+            }
+        });
+
         mCalendar = new GregorianCalendar();
 
         start_txt.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +116,10 @@ public class ClientWritingSecond extends AppCompatActivity {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         Calendar ddayCalendar = Calendar.getInstance();
                         ddayCalendar.set(i, i1, i2);
-                        start_txt.setText(i+"/"+(i1+1)+"/"+i2);
+                        start_txt.setText(i + "/" + (i1 + 1) + "/" + i2);
+                        clientAd.setClientstarttime(i + "/" + (i1 + 1) + "/" + i2);
                     }
-                },year,month,day);
+                }, year, month, day);
                 dialog.setMessage("시작일");
                 dialog.show();
             }
@@ -68,9 +135,11 @@ public class ClientWritingSecond extends AppCompatActivity {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         Calendar ddayCalendar = Calendar.getInstance();
                         ddayCalendar.set(i, i1, i2);
-                        end_txt.setText(i+"/"+(i1+1)+"/"+i2);
+
+                        end_txt.setText(i + "/" + (i1 + 1) + "/" + i2);
+                        clientAd.setClientendtime(i + "/" + (i1 + 1) + "/" + i2);
                     }
-                },year,month,day);
+                }, year, month, day);
                 dialog.setMessage("종료일");
                 dialog.show();
             }
@@ -136,7 +205,7 @@ public class ClientWritingSecond extends AppCompatActivity {
                         bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
                         temp1[0] = (int) listView1.getAdapter().getItemId(position);
                         temp2[0] = 0;
-                        smallcity_string[0]="";
+                        smallcity_string[0] = "";
                         textView.setText(bigcity_string[0]);
                         TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(smallarraylist);
                         listView2.setAdapter(totalsearchCityAdapter);
@@ -153,9 +222,10 @@ public class ClientWritingSecond extends AppCompatActivity {
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       // a = temp1[0];
-                       // b = temp2[0];
+                        // a = temp1[0];
+                        // b = temp2[0];
                         first_textview.setText(bigcity_string[0] + " " + smallcity_string[0]);
+                        clientAd.setClientregion(bigcity_string[0] + " " + smallcity_string[0]);
                     }
                 });
                 builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {

@@ -2,18 +2,21 @@ package com.team4.finding_sw_developers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.team4.finding_sw_developers.Models.ClientAd;
 
 import java.util.ArrayList;
 
@@ -22,24 +25,29 @@ public class ClientWritingFirst extends AppCompatActivity {
     private Button next_button;
     LinearLayout category_layout;
     TextView category_textview;
-    private EditText editText;
-    private Boolean first,second;
-    private LinearLayout scrolllayout;
+    private EditText editText, context;
+    private Boolean first, second;
     private ArrayList<Boolean> arrayList = new ArrayList<>();
     private String[] CategoryString = {"디자인", "그래픽", "홈페이지", "어플리케이션", "서버", "데이터 베이스"};
+    private FirebaseUser mAuth = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference reference;
+   // private User mUser;
+    private ClientAd clientAd;
+    private int select_index=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_writing_first);
-        first=false;
-        second=false;
+        first = false;
+        second = false;
+        clientAd= new ClientAd();
 
         category_layout = findViewById(R.id.first_layout);
         category_textview = findViewById(R.id.first_category_text);
-        scrolllayout = findViewById(R.id.scroll_layout);
-        next_button=findViewById(R.id.first_next_bt);
-        editText=findViewById(R.id.title_text);
+        next_button = findViewById(R.id.first_next_bt);
+        editText = findViewById(R.id.title_text);
+        context = findViewById(R.id.client_content);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -48,8 +56,8 @@ public class ClientWritingFirst extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(editText.length()<6) second= false;
-                else second= true;
+                if (editText.length() < 6) second = false;
+                else second = true;
             }
 
             @Override
@@ -58,18 +66,25 @@ public class ClientWritingFirst extends AppCompatActivity {
             }
         });
 
-        for (int i = 0; i < 6; i++) arrayList.add(false);
 
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(first&&second){
-                    Intent intent = new Intent(ClientWritingFirst.this,ClientWritingSecond.class);
+                if (select_index!=-1 && second/*&&context.length()>=30*/) {
+                    //HashMap<String, Object> hashMap = new HashMap<>();
+                    clientAd.setClientcategory(select_index);
+                    clientAd.setClienttitle(editText.getText().toString());
+                    clientAd.setClientcontext(context.getText().toString());
+
+                    Intent intent = new Intent(ClientWritingFirst.this, ClientWritingSecond.class);
+                    intent.putExtra("Data",clientAd);
                     startActivity(intent);
-                }else if(!first){
+                } else if (select_index==-1) {
                     Toast.makeText(ClientWritingFirst.this, "관심 분야를 선택해 주세요.", Toast.LENGTH_SHORT).show();
-                }else if(!second){
-                    Toast.makeText(ClientWritingFirst.this, "6글자 이상의 제목을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                } else if (!second) {
+                    Toast.makeText(ClientWritingFirst.this, "제목을 6글자 이상의 제목을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+                }else if(context.length()<30){
+                    Toast.makeText(ClientWritingFirst.this, "내용을 30글자 이상의 제목을 입력해 주세요.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -79,39 +94,13 @@ public class ClientWritingFirst extends AppCompatActivity {
         category_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomsheetCategory bottomsheetCategory = new BottomsheetCategory(arrayList);
+                BottomsheetCategory bottomsheetCategory = new BottomsheetCategory(select_index);
                 bottomsheetCategory.setSelectListener(new BottomsheetCategory.SelectListener() {
                     @Override
-                    public void Selecttype(ArrayList<Boolean> arrayList1) {
-                        arrayList = arrayList1;
-                        scrolllayout.removeAllViews();
-                        int count=0;
-
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            if (arrayList.get(i)) {
-                                count++;
-                                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                                View view = inflater.inflate(R.layout.card_layout, null);
-                                final int finalI = i;
-                                view.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Toast.makeText(ClientWritingFirst.this, finalI +"", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                                TextView textView = view.findViewById(R.id.card_textview);
-                                textView.setText(CategoryString[i]);
-
-                                scrolllayout.addView(view);
-                            }
-                        }
-                        if(count==0) {
-                            category_textview.setText("");
-                            first=false;
-                        }
-                        else {
-                            category_textview.setText(count+"개 선택");
-                            first=true;
+                    public void Selecttype(int index) {
+                        if(index!=-1) {
+                            select_index=index;
+                            category_textview.setText(CategoryString[index]);
                         }
 
                     }

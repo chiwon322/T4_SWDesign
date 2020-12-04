@@ -10,8 +10,9 @@
     >
 
     <LinearLayout
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="681dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
         >
@@ -47,10 +48,10 @@
         </LinearLayout>
 
 
-        <LinearLayout
+      <!--  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:gravity="center"
             android:orientation="horizontal"
             >
@@ -70,23 +71,25 @@
                 android:layout_weight="2"
                 />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="제작 기간 선택"
             android:textSize="24sp"
             android:textStyle="bold"
             />
 
         <LinearLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/stroke_design"
             android:gravity="center"
             android:orientation="horizontal"
+            android:padding="8dp"
             >
 
             <TextView
@@ -120,11 +123,111 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="준비 상황을 알려주세요"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <RadioGroup
+                android:id="@+id/prepare_radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:padding="4dp"
+                >
+
+                <RadioButton
+                    android:padding="8dp"
+                    android:id="@+id/prepare_radiobt1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="아이디어 없음"
+                    android:layoutDirection="rtl"
+                    android:textColor="#A1EDE2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:padding="4dp"
+                    />
+
+                <RadioButton
+                    android:padding="8dp"
+                    android:id="@+id/prepare_radiobt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="아이디어만 있음"
+                    android:layoutDirection="rtl"
+                    android:textColor="#A1EDE2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:padding="4dp"
+                    />
+
+                <RadioButton
+                    android:padding="8dp"
+                    android:id="@+id/prepare_radiobt3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="기획안 보유"
+                    android:layoutDirection="rtl"
+                    android:textColor="#A1EDE2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:padding="4dp"
+                    />
+                <RadioButton
+                    android:padding="8dp"
+                    android:id="@+id/prepare_radiobt4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="상세 기획서 보유"
+                    android:layoutDirection="rtl"
+                    android:textColor="#A1EDE2"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"
+                    android:padding="4dp"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/first_next_bt"
+        android:id="@+id/second_next_bt"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="다음"
