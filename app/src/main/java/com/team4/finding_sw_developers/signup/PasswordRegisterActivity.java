@@ -48,7 +48,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
         user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("MEMBER");
+        reference = database.getReference("Users");
 
         progressDialog = new ProgressDialog(PasswordRegisterActivity.this);
         progressDialog.setMessage("Please Wait for registering password");
@@ -194,7 +194,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
-                                reference.child(user_UID).child("id").setValue(user_UID.toLowerCase());
+                                reference.child(user_UID).child("id").setValue(user_UID);
                                 reference.child(user_UID).child("imageURL").setValue("default");
                                 reference.child(user_UID).child("username").setValue("NULL");
                                 reference.child(user_UID).child("search").setValue("NULL");

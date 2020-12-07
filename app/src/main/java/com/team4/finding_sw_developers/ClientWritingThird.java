@@ -22,12 +22,17 @@ public class ClientWritingThird extends AppCompatActivity {
     private EditText editText;
     private FirebaseUser mAuth = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference reference;
+    private String user_UID=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_writing_third);
         Intent intent = getIntent();
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        user_UID = mAuth.getUid();
+
+
         clientAd = (ClientAd) intent.getSerializableExtra("Data");
 
         editText = findViewById(R.id.third_budget_text);
@@ -52,8 +57,7 @@ public class ClientWritingThird extends AppCompatActivity {
                     hashMap.put(FirebaseId.ClientEndtime,clientAd.getClientendtime());
                     hashMap.put(FirebaseId.ClientPrepare,clientAd.getClientprepare());
                     hashMap.put(FirebaseId.ClientBudget,clientAd.getClientbudget());
-
-                    hashMap.put(FirebaseId.ClientWriteId,mAuth.toString());
+                    hashMap.put(FirebaseId.Userid,mAuth.getUid());
 
                     reference.setValue(hashMap);
 

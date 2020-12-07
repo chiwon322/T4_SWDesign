@@ -33,7 +33,7 @@ public class User_information_registration extends AppCompatActivity {
         setContentView(R.layout.user_information_registration);
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("MEMBER");
+        reference = database.getReference("Users");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         user_UID = user.getUid();

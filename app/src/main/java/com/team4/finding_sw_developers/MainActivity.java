@@ -20,6 +20,8 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.team4.finding_sw_developers.signup.PasswordRegisterActivity;
 import com.team4.finding_sw_developers.signup.User_information_registration;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     private ChipNavigationBar chipNavigationBar;
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("MEMBER");
+        reference = database.getReference("Users");
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -92,5 +94,25 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
+    }
+    private void status(String status){
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status)  ;
+
+        reference.updateChildren(hashMap);
+
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 }
