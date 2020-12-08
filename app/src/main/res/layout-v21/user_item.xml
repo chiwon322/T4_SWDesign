@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/background_chatroom"
     android:padding="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -17,7 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/username"
         android:text="usernmae"
-        android:layout_toRightOf="@id/profile_image"
+        android:layout_alignTop="@id/profile_image"
         android:layout_toEndOf="@id/profile_image"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
@@ -56,11 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
         android:layout_toRightOf="@id/profile_image"
-        android:layout_marginTop = "5dp"
-        android:paddingTop="5dp"
         android:id="@+id/last_msg"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginLeft="20dp"
+        android:textColor="#DD000000"
+        android:layout_marginLeft="10dp"
         android:maxLines="1"/>
 
     <TextView

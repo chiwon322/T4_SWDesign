@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="#BCECF3"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/MenuStyle">
 
@@ -31,7 +31,7 @@
                 android:id="@+id/username"
                 android:layout_marginLeft="25dp"
                 android:text="username"
-                android:textColor="#fff"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:layout_marginStart="25dp"/>
 
