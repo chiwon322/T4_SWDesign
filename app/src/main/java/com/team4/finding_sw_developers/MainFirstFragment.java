@@ -39,8 +39,6 @@ public class MainFirstFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        final View v=inflater.inflate(R.layout.fragment_main_first, container, false);
-        Toast.makeText(getContext(), "first", Toast.LENGTH_SHORT).show();
-
        /* recyclerView=v.findViewById(R.id.first_main_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));*/
 
@@ -91,36 +89,9 @@ public class MainFirstFragment extends Fragment {
             }
         });
 
-
-
-
         //CustomAdapter customAdapter = new CustomAdapter(arrayList);
         //recyclerView.setAdapter(customAdapter);
 
         return v;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ClientAd);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    arrayList.clear();
-                   for(DataSnapshot snapshot1:snapshot.getChildren()){
-                       ClientAd item = snapshot1.getValue(ClientAd.class);
-                       arrayList.add(item);
-                   }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }

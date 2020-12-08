@@ -34,7 +34,6 @@ public class MainFourthFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_main_fourth, container, false);
-        Toast.makeText(getContext(), "fourth", Toast.LENGTH_SHORT).show();
         editInfo_button = (Button)v.findViewById(R.id.mypage_editInfo_button);
         userID_textView = (TextView)v.findViewById(R.id.mypage_userID_textView);
         writing_button= v.findViewById(R.id.writing_bt);

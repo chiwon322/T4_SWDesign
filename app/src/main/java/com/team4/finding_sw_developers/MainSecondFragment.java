@@ -19,7 +19,6 @@ public class MainSecondFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v=inflater.inflate(R.layout.fragment_main_second, container, false);
-        Toast.makeText(getContext(), "second", Toast.LENGTH_SHORT).show();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DeveloperAd");
         HashMap<String, Object> hashMap = new HashMap<>();
         reference= FirebaseDatabase.getInstance().getReference("DeveloperAd").push();
