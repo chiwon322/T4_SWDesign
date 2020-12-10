@@ -3,6 +3,7 @@ package com.team4.finding_sw_developers;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +12,14 @@ import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -57,6 +61,16 @@ public class MainFourthFragment extends Fragment {
     private static final int IMAGE_REQUEST = 1;
     private Uri imageUri;
     private StorageTask uploadTask;
+    private ToggleButton toggleButton;
+    private LinearLayout postlayout;
+    private TextView post_text;
+
+    private ChangeStatusLisntener changeStatusLisntener;
+
+    public void setChangeStatusLisntener(ChangeStatusLisntener changeStatusLisntener) {
+        this.changeStatusLisntener = changeStatusLisntener;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +85,9 @@ public class MainFourthFragment extends Fragment {
         editInfo_button = (Button)v.findViewById(R.id.mypage_editInfo_button);
         userID_textView = (TextView)v.findViewById(R.id.mypage_userID_textView);
         writing_button= v.findViewById(R.id.writing_bt);
+        toggleButton=v.findViewById(R.id.toglebutton);
+        postlayout=v.findViewById(R.id.posting_layout);
+        post_text=v.findViewById(R.id.posting_text);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -81,6 +98,24 @@ public class MainFourthFragment extends Fragment {
         writing_button.setOnClickListener(writing_button_onClickListener);
         editInfo_button.setOnClickListener(editInfo_button_onClickListener);
 
+        toggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(toggleButton.isChecked()){
+                    changeStatusLisntener.StatusChange(1);
+                    postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_green));
+                    post_text.setText("요구사항을 작성하시고,\n 딱 맞는 전문가와 거래를 진행하세요!");
+                    writing_button.setBackgroundColor(Color.parseColor("#B2F384"));
+                    MainActivity.status=1;
+                }else{
+                    changeStatusLisntener.StatusChange(2);
+                    postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_blue));
+                    post_text.setText("도움이 필요한 의뢰인을 직접 찾아\n 2배 이상의 수익을 올려보세요!");
+                    writing_button.setBackgroundColor(Color.parseColor("#BCECF3"));
+                    MainActivity.status=2;
+                }
+            }
+        });
 
         //이미지 업로딩
         image_profile = v.findViewById(R.id.profile_image);
@@ -92,8 +127,10 @@ public class MainFourthFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (getContext() == null) {
+                    return;
+                }
                 User user = snapshot.getValue(User.class);
-
                 if(user.getImageURL().equals("default")){
                     image_profile.setImageResource(R.mipmap.ic_launcher);
                 }else{
@@ -185,6 +222,7 @@ public class MainFourthFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(getActivity(), Edit_information.class);
+
             startActivity(intent);
             //getActivity().getSupportFragmentManager().beginTransaction().remove(MainFourthFragment.this).commit();
         }
@@ -214,6 +252,9 @@ public class MainFourthFragment extends Fragment {
                 uploadImage();
             }
         }
+    }
+    interface ChangeStatusLisntener{
+        void StatusChange(int status);
     }
 
 }

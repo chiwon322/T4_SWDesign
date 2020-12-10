@@ -7,6 +7,9 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"/>
 
     <LinearLayout
         android:layout_weight="1"
@@ -31,7 +34,7 @@
         android:id="@+id/chipnavigation"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:background="@drawable/navigationbar"
+        android:background="@drawable/navigationbarblue"
         android:elevation="16dp"
         android:padding="8dp"
         app:cnb_iconSize="40sp"

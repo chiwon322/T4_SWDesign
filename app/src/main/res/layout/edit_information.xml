@@ -36,7 +36,7 @@
             android:background="@drawable/check_state"
             android:button="@android:color/transparent"
             android:padding="16dp"
-            android:text="디자인"
+            android:text="어플리케이션"
             android:textSize="20sp"
             />
 
@@ -53,7 +53,7 @@
             android:background="@drawable/check_state"
             android:button="@android:color/transparent"
             android:padding="16dp"
-            android:text="그래픽"
+            android:text="데이터 베이스"
             android:textSize="20sp"
             />
 
@@ -70,7 +70,7 @@
             android:background="@drawable/check_state"
             android:button="@android:color/transparent"
             android:padding="16dp"
-            android:text="웹"
+            android:text="디자인"
             android:textSize="20sp"
             />
 
@@ -87,7 +87,7 @@
             android:background="@drawable/check_state"
             android:button="@android:color/transparent"
             android:padding="16dp"
-            android:text="어플리케이션"
+            android:text="그래픽"
             android:textSize="20sp"
             />
 
@@ -121,7 +121,7 @@
             android:background="@drawable/check_state"
             android:button="@android:color/transparent"
             android:padding="16dp"
-            android:text="데이터 베이스"
+            android:text="웹"
             android:textSize="20sp"
             />
 

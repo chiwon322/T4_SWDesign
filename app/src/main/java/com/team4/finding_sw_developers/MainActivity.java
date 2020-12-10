@@ -2,6 +2,7 @@ package com.team4.finding_sw_developers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ChipNavigationBar chipNavigationBar;
     private MainFirstFragment main_first_fragment= new MainFirstFragment();
-    private MainSecondFragment main_second_fragment= new MainSecondFragment();
+    private MainSecondFragment main_second_fragment;
     private MainThirdFragment main_third_fragment = new MainThirdFragment();
     private MainFourthFragment main_fourth_fragment = new MainFourthFragment();
 
@@ -34,12 +35,29 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String user_UID;
     private FirebaseUser user;
+    public static int status=1;
+    private int select_index=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
+        main_fourth_fragment.setChangeStatusLisntener(new MainFourthFragment.ChangeStatusLisntener() {
+            @Override
+            public void StatusChange(int status) {
+                if(status==1)chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbargreen));
+                else chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbarblue));
+            }
+        });
+        main_first_fragment.setClickImageview(new MainFirstFragment.ClickImageview() {
+            @Override
+            public void clickListener(int index) {
+                select_index=index;
+                chipNavigationBar.setItemSelected(R.id.second_menu,true);
+            }
+        });
         user = FirebaseAuth.getInstance().getCurrentUser();
         user_UID = user.getUid();
 
@@ -82,8 +100,10 @@ public class MainActivity extends AppCompatActivity {
                    fragmentTransaction.replace(R.id.detail_framlayout, main_first_fragment);
                    fragmentTransaction.commit();
                } else if (i == R.id.second_menu) {
+                   main_second_fragment=new MainSecondFragment(select_index);
                    fragmentTransaction.replace(R.id.detail_framlayout, main_second_fragment);
                    fragmentTransaction.commit();
+                   select_index=0;
                } else if (i == R.id.third_menu) {
                    fragmentTransaction.replace(R.id.detail_framlayout, main_third_fragment);
                    fragmentTransaction.commit();
@@ -115,4 +135,5 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         status("offline");
     }
+
 }

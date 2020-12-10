@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostingActivity"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+    <androidx.core.widget.NestedScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:text="제목"
+                android:id="@+id/post_title"
+                android:textSize="24sp"
+                android:maxLines="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/seoulnamsan_cb"
+                    android:layout_weight="4"
+                    android:id="@+id/post_category"
+                    android:text="category"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:fontFamily="@font/seoulnamsan_cb"
+                    android:textAlignment="textEnd"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:id="@+id/post_visit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:layout_marginTop="24dp"
+                android:textSize="20sp"
+                android:text="금액"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:id="@+id/post_budget"
+                android:textSize="22sp"
+                android:maxLines="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:background="#000000"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:textSize="20sp"
+                android:text="지역"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:id="@+id/post_region"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:layout_marginTop="24dp"
+                android:text="희망 제작 기간"
+
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:fontFamily="@font/seoulnamsan_cb"
+                    android:id="@+id/post_start_term"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="시작일"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="0.2"
+                    android:background="#000000"
+                    />
+
+                <TextView
+                    android:fontFamily="@font/seoulnamsan_cb"
+                    android:id="@+id/post_end_term"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="종료일"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:layout_marginTop="24dp"
+                android:text="프로젝트 준비 사항"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:id="@+id/post_prepare"
+
+                android:textSize="20sp"
+                android:maxLines="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:layout_marginTop="24dp"
+                android:text="상세 내용"
+                android:textSize="20sp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/seoulnamsan_cb"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:padding="12dp"
+                android:background="@drawable/stroke_design"
+                android:id="@+id/post_context"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <Button
+        android:background="#B2F384"
+        android:layout_gravity="bottom"
+        android:id="@+id/post_button"
+        android:text="연결하기"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+
+</LinearLayout>

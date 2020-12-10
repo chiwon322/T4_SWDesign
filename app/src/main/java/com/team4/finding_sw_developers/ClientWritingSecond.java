@@ -49,7 +49,7 @@ public class ClientWritingSecond extends AppCompatActivity {
         clientAd.setClientendtime("기한없음");
         clientAd.setClientprepare("아이디어 없음");
 
-        Toast.makeText(this, clientAd.getClienttitle() + "", Toast.LENGTH_SHORT).show();
+
         first_textview = findViewById(R.id.second_category_text);
         first_layout = findViewById(R.id.second_layout);
 

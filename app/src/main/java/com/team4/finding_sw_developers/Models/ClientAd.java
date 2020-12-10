@@ -12,7 +12,27 @@ public class ClientAd implements Serializable {
     private String clientbudget;
     private String clienttitle;
     private int clientcategory;
+    private String clientkey;
     private String id;
+    private int clientvisit;
+
+    public String getClientkey() {
+        return clientkey;
+    }
+
+    public void setClientkey(String clientkey) {
+        this.clientkey = clientkey;
+    }
+
+
+    public int getClientvisit() {
+        return clientvisit;
+    }
+
+    public void setClientvisit(int clientvisit) {
+        this.clientvisit = clientvisit;
+    }
+
 
     public String getId() {
         return id;
@@ -39,7 +59,6 @@ public class ClientAd implements Serializable {
     public void setClientbudget(String clientbudget) {
         this.clientbudget = clientbudget;
     }
-
 
 
     public int getClientcategory() {

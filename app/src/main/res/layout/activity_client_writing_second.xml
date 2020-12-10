@@ -227,6 +227,7 @@
     </LinearLayout>
 
     <Button
+        android:background="#B2F384"
         android:id="@+id/second_next_bt"
         android:layout_width="match_parent"
         android:layout_height="50dp"

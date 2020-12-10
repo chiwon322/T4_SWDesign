@@ -18,6 +18,42 @@
             android:layout_height="wrap_content"
             >
 
+            <RadioButton
+                android:layoutDirection="rtl"
+                android:id="@+id/app_radio_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_state"
+                android:padding="16dp"
+                android:text="어플리케이션"
+                android:textSize="20sp"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"
+                />
+
+
+            <RadioButton
+                android:layoutDirection="rtl"
+                android:id="@+id/db_radio_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_state"
+                android:padding="16dp"
+                android:text="데이터 베이스"
+                android:textSize="20sp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000"
+                />
+
 
             <RadioButton
                 android:layoutDirection="rtl"
@@ -29,13 +65,11 @@
                 android:text="디자인"
                 android:textSize="20sp"
                 />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#000000"
                 />
-
             <RadioButton
                 android:layoutDirection="rtl"
                 android:id="@+id/graphic_radio_bt"
@@ -47,39 +81,6 @@
                 android:textSize="20sp"
                 />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000000"
-                />
-
-            <RadioButton
-                android:layoutDirection="rtl"
-                android:id="@+id/web_radio_bt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/check_state"
-                android:padding="16dp"
-                android:text="웹"
-                android:textSize="20sp"
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000000"
-                />
-
-            <RadioButton
-                android:layoutDirection="rtl"
-                android:id="@+id/app_radio_bt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/check_state"
-                android:padding="16dp"
-                android:text="어플리케이션"
-                android:textSize="20sp"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,17 +105,17 @@
                 android:background="#000000"
                 />
 
+
             <RadioButton
                 android:layoutDirection="rtl"
-                android:id="@+id/db_radio_bt"
+                android:id="@+id/web_radio_bt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/check_state"
                 android:padding="16dp"
-                android:text="데이터 베이스"
+                android:text="웹"
                 android:textSize="20sp"
                 />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

@@ -194,6 +194,7 @@ public class PasswordRegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 progressDialog.dismiss();
+                                //reference.child(user_UID).child("visitlist").setValue("NULL");
                                 reference.child(user_UID).child("id").setValue(user_UID);
                                 reference.child(user_UID).child("imageURL").setValue("default");
                                 reference.child(user_UID).child("username").setValue("NULL");

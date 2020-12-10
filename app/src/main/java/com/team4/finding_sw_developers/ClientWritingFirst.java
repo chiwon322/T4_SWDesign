@@ -28,7 +28,7 @@ public class ClientWritingFirst extends AppCompatActivity {
     private EditText editText, context;
     private Boolean first, second;
     private ArrayList<Boolean> arrayList = new ArrayList<>();
-    private String[] CategoryString = {"디자인", "그래픽", "홈페이지", "어플리케이션", "서버", "데이터 베이스"};
+    private String[] CategoryString = {"어플리케이션", "데이터 베이스", "디자인", "그래픽", "서버", "웹"};
     private FirebaseUser mAuth = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference reference;
    // private User mUser;
@@ -70,7 +70,7 @@ public class ClientWritingFirst extends AppCompatActivity {
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (select_index!=-1 && second/*&&context.length()>=30*/) {
+                if (select_index!=-1 && second&&context.length()>=30) {
                     //HashMap<String, Object> hashMap = new HashMap<>();
                     clientAd.setClientcategory(select_index);
                     clientAd.setClienttitle(editText.getText().toString());

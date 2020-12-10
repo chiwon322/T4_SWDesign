@@ -123,6 +123,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
+        android:background="#B2F384"
         android:id="@+id/first_next_bt"
         android:layout_width="match_parent"
         android:layout_height="50dp"

@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.net.PasswordAuthentication;
 
@@ -34,7 +35,7 @@ public class Edit_information extends AppCompatActivity {
     private String user_UID, user_name = "";
     private FirebaseUser user;
     private CheckBox[] checkBoxes = new CheckBox[6];
-    private String[] field_name = {"design", "graphic", "web", "app", "server", "database"};
+    private String[] field_name = {"app", "database", "design", "graphic", "server", "web"};
     private Boolean chk[] = new Boolean[6];
     private ProgressDialog dialog;
 
@@ -47,7 +48,8 @@ public class Edit_information extends AppCompatActivity {
         user_UID = user.getUid();
 
         database = FirebaseDatabase.getInstance();
-        reference = database.getReference("MEMBER").child(user_UID);
+        reference = database.getReference("Users").child(user_UID);
+        Toast.makeText(this, user_UID+"", Toast.LENGTH_SHORT).show();
 
         complete_button = (Button)findViewById(R.id.information_editing_complete_button);
         name_editText = (EditText)findViewById(R.id.information_editing_name_editText);
@@ -107,11 +109,15 @@ public class Edit_information extends AppCompatActivity {
             reference.child("username").setValue(new_name);
             reference.child("search").setValue(new_name);
 
+
             for(int i = 0; i < 6; i++) {
                 if(checkBoxes[i].isChecked())
                     reference.child("interest_field").child(field_name[i]).setValue("true");
                 else reference.child("interest_field").child(field_name[i]).setValue("false");
             }
+          /*  for(int i=0;i<6;i++){
+                reference.child("visitlist").child(i+"").setValue("null");
+            }*/
 
             finish();
         }

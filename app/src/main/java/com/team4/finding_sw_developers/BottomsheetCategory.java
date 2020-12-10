@@ -46,12 +46,12 @@ public class BottomsheetCategory extends BottomSheetDialogFragment {
         View v = inflater.inflate(R.layout.select_category_bottomsheet, container, false);
 
         radioGroup=v.findViewById(R.id.radio_group);
-        radiobutton[0] = v.findViewById(R.id.design_radio_bt);
-        radiobutton[1] = v.findViewById(R.id.graphic_radio_bt);
-        radiobutton[2] = v.findViewById(R.id.web_radio_bt);
-        radiobutton[3] = v.findViewById(R.id.app_radio_bt);
+        radiobutton[0] = v.findViewById(R.id.app_radio_bt);
+        radiobutton[1] = v.findViewById(R.id.db_radio_bt);
+        radiobutton[2] = v.findViewById(R.id.design_radio_bt);
+        radiobutton[3] = v.findViewById(R.id.graphic_radio_bt);
         radiobutton[4] = v.findViewById(R.id.server_radio_bt);
-        radiobutton[5] = v.findViewById(R.id.db_radio_bt);
+        radiobutton[5] = v.findViewById(R.id.web_radio_bt);
 
         if(index!=-1) radiobutton[index].setChecked(true);
 

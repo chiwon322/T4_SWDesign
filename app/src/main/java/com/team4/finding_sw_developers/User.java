@@ -1,16 +1,29 @@
 package com.team4.finding_sw_developers;
 
+import java.util.ArrayList;
+
 public class User {
     private String id;
     private String username;
     private String imageURL;
     private String status;
     private String auth;
+    private ArrayList<String> visitlist;
+
+    public ArrayList<String> getVisitlist() {
+        return visitlist;
+    }
+
+    public void setVisitlist(ArrayList<String> visitlist) {
+        this.visitlist = visitlist;
+    }
+
 
     public String getId() {
         return id;
     }
-    public User(){
+
+    public User() {
 
     }
 

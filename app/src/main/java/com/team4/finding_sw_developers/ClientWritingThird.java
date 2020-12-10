@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,12 +45,22 @@ public class ClientWritingThird extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (editText.length() != 0) {
-                    clientAd.setClientbudget(editText.getText().toString());
+                        String budget= editText.getText().toString();
+                    if(budget.length()==3){
+                        String temp = budget.charAt(0)+","+budget.charAt(1)+budget.charAt(2);
+                        budget=temp;
+                    }else if(editText.getText().length()==4){
+                        String temp = budget.charAt(0)+budget.charAt(1)+","+budget.charAt(2)+budget.charAt(3);
+                        budget=temp;
+                    }
+                    clientAd.setClientbudget(budget);
 
                     reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ClientAd).push();
                     String key = reference.getKey();
                     HashMap<String,Object> hashMap = new HashMap<>();
 
+
+                    hashMap.put(FirebaseId.ClientKey,key);
                     hashMap.put(FirebaseId.ClientCategory,clientAd.getClientcategory());
                     hashMap.put(FirebaseId.Clienttitle,clientAd.getClienttitle());
                     hashMap.put(FirebaseId.ClientContext,clientAd.getClientcontext());
@@ -58,6 +70,7 @@ public class ClientWritingThird extends AppCompatActivity {
                     hashMap.put(FirebaseId.ClientPrepare,clientAd.getClientprepare());
                     hashMap.put(FirebaseId.ClientBudget,clientAd.getClientbudget());
                     hashMap.put(FirebaseId.Userid,mAuth.getUid());
+                    hashMap.put(FirebaseId.ClientVisit,0);
 
                     reference.setValue(hashMap);
 

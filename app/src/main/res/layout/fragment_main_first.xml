@@ -48,6 +48,64 @@
                         >
 
                         <ImageView
+                            android:id="@+id/app_image"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/app"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="어플리케이션"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:id="@+id/database_image"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/database_icon"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="데이터 베이스"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:id="@+id/design_image"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
@@ -65,89 +123,6 @@
                             android:textSize="12sp"
                             />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/programming_icon"
-                            android:padding="8dp"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="IT·프로그래밍"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <ImageView
-
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/video_icon"
-                            android:padding="8dp"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="영상·사진·음향"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/marketing_icon"
-                            android:padding="8dp"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="마케팅"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            />
-                    </LinearLayout>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -157,6 +132,35 @@
                     android:orientation="horizontal"
                     android:padding="8dp"
                     >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        >
+
+                        <ImageView
+                            android:id="@+id/graphic_image"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_margin="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/graphic"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="그래픽"
+                            android:textAlignment="center"
+                            android:textSize="12sp"
+                            />
+                    </LinearLayout>
+
+
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -167,11 +171,12 @@
                         >
 
                         <ImageView
+                            android:id="@+id/server_image"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="@drawable/translate_icon"
+                            android:background="@drawable/server"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             />
@@ -179,12 +184,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="번역"
+                            android:text="서버"
                             android:textAlignment="center"
                             android:textSize="12sp"
                             />
                     </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -194,11 +198,12 @@
                         >
 
                         <ImageView
+                            android:id="@+id/web_image"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="@drawable/document_icon"
+                            android:background="@drawable/web"
                             android:padding="8dp"
                             android:scaleType="fitCenter"
                             />
@@ -206,77 +211,91 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="문서·글쓰기"
+                            android:text="웹"
                             android:textAlignment="center"
                             android:textSize="12sp"
                             />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <ImageView
-
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/business_consulting_icon"
-                            android:padding="8dp"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="비즈니스컨설팅"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        >
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/lesson_icon"
-                            android:padding="8dp"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="레슨·실무교육"
-                            android:textAlignment="center"
-                            android:textSize="12sp"
-                            />
-                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/main_fragment_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                ></LinearLayout>
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="회원님이 관심있는 서비스"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/main_fragment_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical"
+                    ></LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="다른 회원들이 많이 보는 서비스"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/main_fragment_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical"
+                    ></LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="최근 본 서비스"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/new_see_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
 
 
             <!--<androidx.recyclerview.widget.RecyclerView
@@ -289,71 +308,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#03DAD2"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            >
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                >
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/ic_baseline_search_24"
-                    android:scaleType="centerCrop"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="10"
-                android:gravity="center"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="가나다라"
-                    android:textAlignment="center"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                >
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/ic_baseline_search_24"
-                    android:scaleType="fitXY"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
 
 
 </FrameLayout>
