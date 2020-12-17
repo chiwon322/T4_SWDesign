@@ -71,6 +71,7 @@ public class ExpertWritingSecond extends AppCompatActivity {
 
                     Intent intent = new Intent(ExpertWritingSecond.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("state",1);
                     finish();
                     startActivity(intent);
                 }

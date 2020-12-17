@@ -416,8 +416,8 @@ public class MainFirstFragment extends Fragment {
                                     intent.putExtra("userid", user);
                                     startActivity(intent);*/
                                                         if (expertAd != null) {
-                                                            Intent intent = new Intent(getContext(), ClientPostingActivity.class);
-                                                            intent.putExtra("client_key", expertAd.getExpertkey());
+                                                            Intent intent = new Intent(getContext(), ExpertPostingActivity.class);
+                                                            intent.putExtra("expert_key", expertAd.getExpertkey());
                                                             startActivity(intent);
                                                         }
 
