@@ -15,6 +15,15 @@ public class ClientAd implements Serializable {
     private String clientkey;
     private String id;
     private int clientvisit;
+    private Boolean clientmatching;
+
+    public Boolean getClientmatching() {
+        return clientmatching;
+    }
+
+    public void setClientmatching(Boolean clientmatching) {
+        this.clientmatching = clientmatching;
+    }
 
     public String getClientkey() {
         return clientkey;

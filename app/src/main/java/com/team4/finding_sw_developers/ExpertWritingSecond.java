@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,27 +13,27 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.team4.finding_sw_developers.Models.ClientAd;
+import com.team4.finding_sw_developers.Models.ExpertAd;
 
 import java.util.HashMap;
 
-public class ClientWritingThird extends AppCompatActivity {
+public class ExpertWritingSecond extends AppCompatActivity {
     private Button finish_bt;
-    private ClientAd clientAd = new ClientAd();
+    private ExpertAd expertAd = new ExpertAd();
     private EditText editText;
     private FirebaseUser mAuth = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference reference;
     private String user_UID=null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_writing_third);
+        setContentView(R.layout.activity_expert_writing_second);
         Intent intent = getIntent();
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         user_UID = mAuth.getUid();
 
 
-        clientAd = (ClientAd) intent.getSerializableExtra("Data");
+        expertAd = (ExpertAd) intent.getSerializableExtra("Data");
 
         editText = findViewById(R.id.third_budget_text);
 
@@ -45,7 +43,7 @@ public class ClientWritingThird extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (editText.length() != 0) {
-                        String budget= editText.getText().toString();
+                    String budget= editText.getText().toString();
                     if(budget.length()==3){
                         String temp = budget.charAt(0)+","+budget.charAt(1)+budget.charAt(2);
                         budget=temp;
@@ -53,31 +51,26 @@ public class ClientWritingThird extends AppCompatActivity {
                         String temp = budget.charAt(0)+budget.charAt(1)+","+budget.charAt(2)+budget.charAt(3);
                         budget=temp;
                     }
-                    clientAd.setClientbudget(budget);
+                    expertAd.setExpertbudget(budget);
 
-                    reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ClientAd).push();
+                    reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ExpertAd).push();
                     String key = reference.getKey();
                     HashMap<String,Object> hashMap = new HashMap<>();
 
 
-                    hashMap.put(FirebaseId.ClientKey,key);
-                    hashMap.put(FirebaseId.ClientCategory,clientAd.getClientcategory());
-                    hashMap.put(FirebaseId.Clienttitle,clientAd.getClienttitle());
-                    hashMap.put(FirebaseId.ClientContext,clientAd.getClientcontext());
-                    hashMap.put(FirebaseId.ClientRegion,clientAd.getClientregion());
-                    hashMap.put(FirebaseId.ClientStarttime,clientAd.getClientstarttime());
-                    hashMap.put(FirebaseId.ClientEndtime,clientAd.getClientendtime());
-                    hashMap.put(FirebaseId.ClientPrepare,clientAd.getClientprepare());
-                    hashMap.put(FirebaseId.ClientBudget,clientAd.getClientbudget());
+                    hashMap.put(FirebaseId.ExpertKey,key);
+                    hashMap.put(FirebaseId.ExpertCategory,expertAd.getExpertcategory());
+                    hashMap.put(FirebaseId.Experttitle,expertAd.getExperttitle());
+                    hashMap.put(FirebaseId.ExpertContext,expertAd.getExpertcontext());
+                    hashMap.put(FirebaseId.ExpertBudget,expertAd.getExpertbudget());
                     hashMap.put(FirebaseId.Userid,mAuth.getUid());
-                    hashMap.put(FirebaseId.ClientVisit,0);
-                    hashMap.put(FirebaseId.ClientMatching,false);
+                    hashMap.put(FirebaseId.ExpertVisit,0);
+                    hashMap.put(FirebaseId.ExpertMatching,false);
 
                     reference.setValue(hashMap);
 
-                    Intent intent = new Intent(ClientWritingThird.this, MainActivity.class);
+                    Intent intent = new Intent(ExpertWritingSecond.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("state",2);
                     finish();
                     startActivity(intent);
                 }

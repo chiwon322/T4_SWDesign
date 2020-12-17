@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ClientWritingSecond"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="제작 비용을 입력해 주세요."
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:id="@+id/second_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/stroke_design"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            >
+
+            <EditText
+                android:maxLength="4"
+                android:id="@+id/third_budget_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="최소 1"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:paddingEnd="8dp"
+                android:textAlignment="textEnd"
+                android:textSize="20sp"
+                />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="만원"
+                android:textSize="30sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:background="#BCECF3"
+        android:id="@+id/third_finish_bt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="완료"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+
+
+</LinearLayout>

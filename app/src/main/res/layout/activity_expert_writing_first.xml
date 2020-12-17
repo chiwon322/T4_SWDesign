@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ClientWritingFirst"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="광고할 분야를 선택해주세요.."
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:id="@+id/first_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/stroke_design"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/first_category_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="상위 카테고리"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="광고할 서비스의 제목을\n작성해 주세요."
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/stroke_design"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                >
+
+                <EditText
+                    android:id="@+id/title_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="예)OOO분야를 제작 요청합니다."
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/client_content"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="상세 내용을 기입해 주세요."
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/stroke_design"
+                android:orientation="vertical"
+                >
+
+                <EditText
+                    android:id="@+id/client_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="left|top"
+                    android:imeOptions="actionDone"
+                    android:minLines="10"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:background="#BCECF3"
+        android:id="@+id/first_next_bt"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="다음"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+
+
+</LinearLayout>

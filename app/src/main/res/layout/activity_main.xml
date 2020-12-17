@@ -112,13 +112,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         >
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/button_login_google_signup"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@drawable/google_sign_up_icon"
-            android:scaleType="centerCrop"
-            />
         <Button
             android:foreground="?attr/selectableItemBackground"
             android:background="@drawable/sign_up_icon"

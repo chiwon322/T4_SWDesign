@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class User_information_registration extends AppCompatActivity {
 
     private EditText name_editText;

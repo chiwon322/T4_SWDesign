@@ -97,22 +97,31 @@ public class MainFourthFragment extends Fragment {
 
         writing_button.setOnClickListener(writing_button_onClickListener);
         editInfo_button.setOnClickListener(editInfo_button_onClickListener);
+        if(MainActivity.getState()==2){
+            toggleButton.setChecked(true);
+            postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_green));
+            post_text.setText("요구사항을 작성하시고,\n 딱 맞는 전문가와 거래를 진행하세요!");
+            writing_button.setBackgroundColor(Color.parseColor("#B2F384"));
+        }else{
+            toggleButton.setChecked(false);
+            postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_blue));
+            post_text.setText("도움이 필요한 의뢰인을 직접 찾아\n 2배 이상의 수익을 올려보세요!");
+            writing_button.setBackgroundColor(Color.parseColor("#BCECF3"));
+        }
 
         toggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(toggleButton.isChecked()){
-                    changeStatusLisntener.StatusChange(1);
+                    changeStatusLisntener.StatusChange(2);
                     postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_green));
                     post_text.setText("요구사항을 작성하시고,\n 딱 맞는 전문가와 거래를 진행하세요!");
                     writing_button.setBackgroundColor(Color.parseColor("#B2F384"));
-                    MainActivity.status=1;
                 }else{
-                    changeStatusLisntener.StatusChange(2);
+                    changeStatusLisntener.StatusChange(1);
                     postlayout.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.stroke_design_blue));
                     post_text.setText("도움이 필요한 의뢰인을 직접 찾아\n 2배 이상의 수익을 올려보세요!");
                     writing_button.setBackgroundColor(Color.parseColor("#BCECF3"));
-                    MainActivity.status=2;
                 }
             }
         });
@@ -231,8 +240,14 @@ public class MainFourthFragment extends Fragment {
     View.OnClickListener writing_button_onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), ClientWritingFirst.class);
-            startActivity(intent);
+            if(toggleButton.isChecked()){
+                Intent intent = new Intent(getActivity(), ClientWritingFirst.class);
+                startActivity(intent);
+            }else {
+                Intent intent = new Intent(getActivity(), ExpertWritingFirst.class);
+                startActivity(intent);
+            }
+
 
         }
     };

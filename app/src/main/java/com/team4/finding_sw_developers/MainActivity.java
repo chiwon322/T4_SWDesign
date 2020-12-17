@@ -35,20 +35,30 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String user_UID;
     private FirebaseUser user;
-    public static int status=1;
     private int select_index=0;
+    private static int state=1;
 
-
-
+    public static int getState() {
+        return state;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        Intent intent=getIntent();
+        state=intent.getIntExtra("state",1);
+
         main_fourth_fragment.setChangeStatusLisntener(new MainFourthFragment.ChangeStatusLisntener() {
             @Override
             public void StatusChange(int status) {
-                if(status==1)chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbargreen));
-                else chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbarblue));
+                if(status==2){
+                    chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbargreen));
+                    state=status;
+                }
+                else {
+                    chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbarblue));
+                    state=status;
+                }
             }
         });
         main_first_fragment.setClickImageview(new MainFirstFragment.ClickImageview() {
@@ -84,7 +94,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         chipNavigationBar = findViewById(R.id.chipnavigation);
-
+        if(state==1){
+            chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbarblue));
+        }else{
+            chipNavigationBar.setBackground(ContextCompat.getDrawable(MainActivity.this, R.drawable.navigationbargreen));
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.detail_framlayout, main_first_fragment);

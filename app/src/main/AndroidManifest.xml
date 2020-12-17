@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostingActivity"></activity>
+        <activity android:name=".ExpertWritingSecond"></activity>
+        <activity android:name=".ExpertWritingFirst" />
+        <activity android:name=".ClientPostingActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".InforForClientAd" />
         <activity
@@ -29,7 +31,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".signup.PasswordRegisterActivity" />
         <activity android:name=".signup.SignUpActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -39,6 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ExpertPostingActivity"/>
 
         <service
             android:name=".Notification.MyFirebaseIdService"

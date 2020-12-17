@@ -9,6 +9,15 @@ public class User {
     private String status;
     private String auth;
     private ArrayList<String> visitlist;
+   /* private ArrayList<String> interestfiled;
+
+    public ArrayList<String> getInterest_field() {
+        return interestfiled;
+    }
+
+    public void setInterest_field(ArrayList<String> interestfiled) {
+        this.interestfiled = interestfiled;
+    }*/
 
     public ArrayList<String> getVisitlist() {
         return visitlist;

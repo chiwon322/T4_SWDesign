@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
         isRegistered=false;
         button_login_signup = (Button) findViewById(R.id.button_login_signup);
-        button_google_signup = (ImageButton) findViewById(R.id.button_login_google_signup);
+       // button_google_signup = (ImageButton) findViewById(R.id.button_login_google_signup);
         editText_email = (EditText) findViewById(R.id.editText_login_email);
         editText_password = (EditText) findViewById(R.id.editText_login_password);
         button_login_signin=findViewById(R.id.button_login_signin);
@@ -87,13 +87,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        button_google_signup.setOnClickListener(new View.OnClickListener() {
+        /*button_google_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
                 signIn();
             }
-        });
+        });*/
 
         editText_email.addTextChangedListener(new TextWatcher() {
             @Override
