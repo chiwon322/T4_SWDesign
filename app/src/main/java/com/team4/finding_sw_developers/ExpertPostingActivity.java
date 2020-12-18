@@ -52,11 +52,11 @@ public class ExpertPostingActivity extends AppCompatActivity {
         aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ClientAd).child(expertAd.getExpertkey());
+                reference = FirebaseDatabase.getInstance().getReference(FirebaseId.ExpertAd).child(expertAd.getExpertkey());
                 if(b){
-                    reference.child(FirebaseId.ClientMatching).setValue(true);
+                    reference.child(FirebaseId.ExpertMatching).setValue(true);
                 }else{
-                    reference.child(FirebaseId.ClientMatching).setValue(false);
+                    reference.child(FirebaseId.ExpertMatching).setValue(false);
                 }
             }
         });
