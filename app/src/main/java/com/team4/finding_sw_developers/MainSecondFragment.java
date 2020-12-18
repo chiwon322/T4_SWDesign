@@ -58,7 +58,7 @@ public class MainSecondFragment extends Fragment {
                         clientarrayList.clear();
                         for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                             ClientAd item = snapshot1.getValue(ClientAd.class);
-                            if (index == 0) {
+                           if (index == 0) {
                                 clientarrayList.add(item);
                             } else {
                                 if (index != 0 && item.getClientcategory() == (index - 1))
@@ -204,8 +204,8 @@ public class MainSecondFragment extends Fragment {
                                     intent.putExtra("userid", user);
                                     startActivity(intent);*/
                                                 if (expertAd != null) {
-                                                    Intent intent = new Intent(getContext(), ClientPostingActivity.class);
-                                                    intent.putExtra("client_key", expertAd.getExpertkey());
+                                                    Intent intent = new Intent(getContext(), ExpertPostingActivity.class);
+                                                    intent.putExtra("expert_key", expertAd.getExpertkey());
                                                     startActivity(intent);
                                                 }
                                             }

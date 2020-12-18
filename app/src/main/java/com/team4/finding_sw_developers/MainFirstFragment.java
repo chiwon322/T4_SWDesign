@@ -408,7 +408,7 @@ public class MainFirstFragment extends Fragment {
                                                             reference.updateChildren(hashMap);
                                                         }
                                                         //Toast.makeText(getContext(), arrayList.get(finalI).getClientkey()+"", Toast.LENGTH_SHORT).show();
-                                                        reference = database.getReference(FirebaseId.ClientAd).child(expertAd.getExpertkey());
+                                                        reference = database.getReference(FirebaseId.ExpertAd).child(expertAd.getExpertkey());
                                                         reference.child(FirebaseId.ExpertVisit).setValue(see_list.get(finalI).getExpertvisit() + 1);
                                                         //Toast.makeText(getContext(), clientAd.getClientvisit() + "", Toast.LENGTH_SHORT).show();
                                     /*Intent intent = new Intent(getContext(), MessageActivity.class);

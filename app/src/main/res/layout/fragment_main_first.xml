@@ -251,8 +251,7 @@
                     android:layout_marginTop="36dp"
                     android:text="다른 회원들이 많이 보는 서비스"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:id="@+id/main_fragment_layout2"
